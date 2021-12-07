@@ -144,10 +144,7 @@ if [[ $REPLY =~ ^[Yy]$ ]] || [ -z $REPLY ]; then
         printf "${WS_MERGE_RESULT}"
         printf "\n"
     done
-
-    printf "\n Updating all repositories now...\n"
-    cd ${ABSOLUTE_PATH}
-    wstool update
+    
 
 fi
 
@@ -196,3 +193,4 @@ if [ ! -z $FSSIM ]; then
     ./update_dependencies.sh
     cd ../../
 fi
+
