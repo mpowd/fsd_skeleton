@@ -193,8 +193,6 @@ fi
 if [ ! -z $FSSIM ]; then
     printf "Updating FSSIM dependencies..."
     cd src/fssim/
-    git pull
     ./update_dependencies.sh
-    git lfs pull
     cd ../../
 fi
