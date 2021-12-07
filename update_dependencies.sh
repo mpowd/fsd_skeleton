@@ -10,8 +10,8 @@ WSTOOL_PACKAGE="python-wstool"
 CHECKINSTALL_PACKAGE="checkinstall"
 
 ROS_PACKAGE=(
-    "ros-kinetic-desktop-full"
-    "ros-kinetic-ros-base"
+    "ros-noetic-desktop-full"
+    "ros-noetic-ros-base"
 )
 
 FSD_WORKPACKAGES=(
@@ -70,7 +70,7 @@ printf "First checking some things...\n"
 # 		Check installed packages			#
 #########################################
 printf "Checking if ROS is installed... "
-package_OK=$(dpkg-query -W --showformat='${Status}\n' "${ROS_PACKAGE[0]}"  2> /dev/null|grep "install ok installed")
+package_OK=$(git@github.com:Sloug/fsd_skeleton.git "${ROS_PACKAGE[0]}"  2> /dev/null|grep "install ok installed")
 
 if [ "" == "$package_OK" ]; then
 package_OK=$(dpkg-query -W --showformat='${Status}\n' "${ROS_PACKAGE[1]}"  2> /dev/null|grep "install ok installed")
