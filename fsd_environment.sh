@@ -2,7 +2,7 @@
 
 CATKIN_SHELL=zsh
 
-export FSD_ROOT=$( cd "$(dirname "${ZSH_SOURCE[0]}" )" && pwd)
+export FSD_ROOT=$( cd "$(dirname "${(%):-%N}" )" && pwd)
 
 printf "Sourcing fsd_skeleton/devel/setup.zsh\n"
 
