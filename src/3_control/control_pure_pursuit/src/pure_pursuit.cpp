@@ -104,7 +104,7 @@ void PurePursuit::createControlCommand()
 
   {  // Steering Control
 
-    // const double beta_est = control_command_.steering_angle.data * 0.5;
+    //const double beta_est = control_command_.steering_angle.data * 0.5;
     // const double length   = std::hypot(next_point.y - state_.car_state.y, next_point.x - state_.car_state.x);
 
     // const double eta      = std::atan2(next_point.y - state_.car_state.y, next_point.x - state_.car_state.x)
@@ -120,9 +120,13 @@ void PurePursuit::createControlCommand()
       next_point_odom.header.frame_id = "odom";
       tfListener.transformPoint("fsds/FSCar", next_point_odom, next_point_fscar);
 
+      // Steering angle formulas based on paper "Implementation of the Pure Pursuit Path Tracking Algorithm" from R. Craig Coulter"
+      // https://www.ri.cmu.edu/pub_files/pub3/coulter_r_craig_1992_1/coulter_r_craig_1992_1.pdf
+
       const double length = std::hypot(next_point_fscar.point.y, next_point_fscar.point.x);
       const double gamma = (2 * next_point_fscar.point.y) / (pow(length, 2));
-      control_command_.steering_angle.data = static_cast<float>(gamma);
+      control_command_.steering_angle.data = static_cast<float>(steering_p * gamma);
+      ROS_INFO_STREAM(gamma);
     }
     catch (tf::TransformException& ex)
     {
