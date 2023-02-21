@@ -29,6 +29,8 @@
 #include "fsd_common_msgs/CarStateDt.h"
 #include "geometry_msgs/Point.h"
 #include "std_msgs/String.h"
+#include <tf/transform_listener.h>
+
 
 namespace ns_pure_pursuit {
 
@@ -70,11 +72,14 @@ class PurePursuit {
 
     double speed_p;
     double steering_p;
+    int look_ahead_distance;
 
     geometry_msgs::Polygon          center_line_;
     fsd_common_msgs::CarState       state_;
     fsd_common_msgs::CarStateDt     velocity_;
     fsd_common_msgs::ControlCommand control_command_;
+
+    tf::TransformListener tfListener;
 
     double max_speed_;
 };
