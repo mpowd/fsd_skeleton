@@ -1,0 +1,6 @@
+map_publish_topic_name: /estimation/slam/map
+testing_only_track_subscribe_topic_name: /fsds/testing_only/track
+marker_publish_topic_name: /control/pure_pursuit/nearest_cones_marker
+
+node_rate: 10
+max_cone_distance: 15
