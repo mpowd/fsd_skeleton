@@ -70,14 +70,14 @@ printf "First checking some things...\n"
 # 		Check installed packages			#
 #########################################
 printf "Checking if ROS is installed... "
-package_OK=$(git@github.com:Sloug/fsd_skeleton.git "${ROS_PACKAGE[0]}"  2> /dev/null|grep "install ok installed")
+package_OK=$(git@github.com:mpowd/fsd_skeleton.git "${ROS_PACKAGE[0]}"  2> /dev/null|grep "install ok installed")
 
 if [ "" == "$package_OK" ]; then
 package_OK=$(dpkg-query -W --showformat='${Status}\n' "${ROS_PACKAGE[1]}"  2> /dev/null|grep "install ok installed")
 fi
 if [ "" == "$package_OK" ]; then
     printf "[${red}NO${end}]\n"
-    printf "Please install the ROS using: 'sudo apt install ros-kinetic-desktop-full' or 'sudo apt install ros-kinetic-ros-base'\n"
+    printf "Please install the ROS using: 'sudo apt install ros-noetic-desktop-full' or 'sudo apt install ros-noetic-ros-base'\n"
     exit 1
 fi
 printf "[${green}YES${end}]\n"

@@ -13,3 +13,4 @@ controller:
     p: 0.03
   steering:
     p: 1.0
+    look_ahead_distance: 15
